@@ -31,6 +31,25 @@ public class LandingPage {
 		public void searchItem() throws Exception {
 			Properties propObj = new Properties();
 			propObj.load(new FileInputStream(rootFolder+"//src/test//resources//data.properties"));
+			driver.findElement(By.xpath("//span[normalize-space()='Bag']")).click();
+			if(driver.findElement(By.xpath("//div[@class='emptyCart-base-emptyText']")).isDisplayed()) {
+				Thread.sleep(3000);
+				driver.navigate().back();
+				driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).click();
+				driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).sendKeys(propObj.getProperty("keyword"));
+				driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).sendKeys(Keys.ENTER);
+				Thread.sleep(3000);
+				product.click();
+				 ArrayList<String> newTb = new ArrayList<String>(driver.getWindowHandles());
+			 
+			    driver.switchTo().window(newTb.get(1));
+			    Thread.sleep(3000);
+				driver.findElement(By.xpath("//body/div[@id='mountRoot']/div/div/main[@class='pdp-pdp-container']/div[@class='pdp-details common-clearfix']/div[@class='pdp-description-container']/div/div[2]/div[1]/div[1]")).click();
+				driver.findElement(By.xpath("//span[normalize-space()='Bag']")).click();
+				Thread.sleep(3000);
+				driver.navigate().refresh();
+			}
+			/*
 			driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).click();
 			driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).sendKeys(propObj.getProperty("keyword"));
 			driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).sendKeys(Keys.ENTER);
@@ -41,7 +60,7 @@ public class LandingPage {
 		    driver.switchTo().window(newTb.get(1));
 			driver.findElement(By.xpath("//body/div[@id='mountRoot']/div/div/main[@class='pdp-pdp-container']/div[@class='pdp-details common-clearfix']/div[@class='pdp-description-container']/div/div[2]/div[1]/div[1]")).click();
 			driver.findElement(By.xpath("//span[normalize-space()='Bag']")).click();
-			
+			*/
 		}
 		
 		

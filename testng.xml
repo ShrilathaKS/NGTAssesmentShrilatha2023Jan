@@ -3,7 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="testng">
     <classes>
-      <class name="com.app.tests.Tests"/>
+      <class name="com.app.tests.SearchTest"/>
+      <class name="com.app.tests.AddToBagTest"/>
     </classes>
   </test> <!-- testng -->
 </suite> <!-- Suite -->
